@@ -1,13 +1,29 @@
-@import "~src/globals";
+$BackgroundColor: #EAE1D0;
+$AccentColor: #EB4752;
 
-:host {
+.page {
   display: flex;
   justify-content: center;
-  height: 100%;
-  background-color: #EAE1D0;
+  background-color: $BackgroundColor;
+
+  img {
+    max-width: 60%;
+    object-fit: contain;
+  }
+  .artists {
+    font-family: Hind;
+    font-size: 1.2em;
+    // color: $AccentColor;
+    position: absolute;
+    h1 {
+      margin: 0;
+    }
+  }
 }
 
-img {
-  // max-width: 60%;
-  object-fit: contain;
+.title {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
 }
