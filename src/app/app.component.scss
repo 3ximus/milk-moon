@@ -1,13 +1,13 @@
 @import "~src/globals";
 
-
 :host {
   display: flex;
   justify-content: center;
   height: 100%;
+  background-color: #EAE1D0;
 }
 
 img {
-  max-width: 60%;
+  // max-width: 60%;
   object-fit: contain;
 }
