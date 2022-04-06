@@ -3,7 +3,9 @@
 
 		<div class="artists">
 			<div class="artist"
-				*ngFor="let artist of artists">
+				*ngFor="let artist of artists"
+				(click)="goTo(artist.url)"
+				>
 				<h1>{{ artist.name }}</h1>
 			</div>
 		</div>
