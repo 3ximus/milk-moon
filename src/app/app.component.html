@@ -1,20 +1,15 @@
 <div class="page">
-	<div class="artists">
+	<div class="milk-artists">
 
-		<div class="artist">
-			<h1>Danielle ❤ </h1>
+		<div class="artists">
+			<div class="artist"
+				*ngFor="let artist of artists">
+				<h1>{{ artist.name }}</h1>
+			</div>
 		</div>
 
-		<div class="artist">
-			<h1>Yey</h1>
-		</div>
-
-		<div class="artist">
-			<h1>Poop</h1>
-		</div>
+		<img src="assets/milk-pack.png">
 	</div>
-
-	<img src="assets/milk-pack.png">
 </div>
 
 <img class="title" src="assets/title.png">
