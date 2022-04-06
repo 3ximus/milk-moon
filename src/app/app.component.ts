@@ -12,7 +12,7 @@ interface Artist {
 })
 export class AppComponent {
   artists: Artist[] = [
-    { name: "Danielle ♥ ", url: "" },
+    { name: "Danielle ♥ ", url: "https://danielleromaine.wixsite.com/artwork" },
     { name: "Max 📸", url: "" },
     { name: "Joe 🌞 ", url: "" },
     { name: "Aspirin 🐈 ", url: "" },
