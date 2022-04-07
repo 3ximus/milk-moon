@@ -7,6 +7,7 @@ $TopMargin: 25vh;
   display: flex;
   justify-content: center;
   background-color: $BackgroundColor;
+  overflow: hidden;
 
   .milk-artists {
     max-width: 50%;
@@ -64,4 +65,11 @@ $TopMargin: 25vh;
   top: 0;
   right: 0;
   width: 400px;
+}
+
+@media screen and (max-width: 655px) {
+  .title {
+    left: 0;
+    width: 100vw;
+  }
 }

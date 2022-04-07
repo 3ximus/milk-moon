@@ -28,6 +28,7 @@ export class AppComponent {
   ]
 
   goTo(url: string) {
-    window.open(url, '_blank');
+    if (url)
+      window.open(url, '_blank');
   }
 }
