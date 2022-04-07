@@ -12,19 +12,19 @@ interface Artist {
 })
 export class AppComponent {
   artists: Artist[] = [
-    { name: "Danielle ♥ ", url: "https://danielleromaine.wixsite.com/artwork" },
-    { name: "Max 📸", url: "" },
-    { name: "Joe 🌞 ", url: "" },
-    { name: "Aspirin 🐈 ", url: "" },
-    { name: "Other", url: "" },
-    { name: "Other", url: "" },
-    { name: "Other", url: "" },
-    { name: "Other", url: "" },
-    { name: "Other", url: "" },
-    { name: "Other", url: "" },
-    { name: "Other", url: "" },
-    { name: "Other", url: "" },
-    { name: "Other", url: "" },
+    { name: "Danielle ♥ " , url: "https://danielleromaine.wixsite.com/artwork" },
+    { name: "Max 📸"      , url: "" },
+    { name: "Joe 🌞 "     , url: "" },
+    { name: "Aspirin 🐈 " , url: "" },
+    { name: "Other"       , url: "" },
+    { name: "Other"       , url: "" },
+    { name: "Other"       , url: "" },
+    { name: "Other"       , url: "" },
+    { name: "Other"       , url: "" },
+    { name: "Other"       , url: "" },
+    { name: "Other"       , url: "" },
+    { name: "Other"       , url: "" },
+    { name: "Other"       , url: "" },
   ]
 
   goTo(url: string) {

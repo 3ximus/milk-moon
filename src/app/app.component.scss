@@ -45,7 +45,7 @@ $TopMargin: 25vh;
           top: 0;
           height: 100%;
           width: 0%;
-          transition: width 1s cubic-bezier(1.0, 0.0, 0.2, 1.0) .1s;
+          transition: width .7s cubic-bezier(1.0, 0.0, 0.2, 1.0) .1s;
         }
 
         &:hover {
