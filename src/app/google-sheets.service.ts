@@ -1,35 +1,32 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
+import { GoogleSheetsDbService } from 'ng-google-sheets-db';
+
+export interface Artist {
+  paid: string;
+  name: string;
+  link: string;
+}
+
+const artistsMap = {
+  paid: 'Paid',
+  name: 'Names',
+  link: 'Links',
+};
 
 @Injectable({
   providedIn: 'root',
 })
 export class GoogleSheetsService {
-  constructor(private http: HttpClient) {}
+  constructor(private googleSheetsDbService: GoogleSheetsDbService) {}
 
-  getSheetData(): Observable<any> {
-    const sheetno = 'o6isq5z';
-    const sheetid = '1GLoPM2OKSGQPypZeBL3uCl4diAi4YXLye-LrXIx4jr4';
-    const url = `https://spreadsheets.google.com/feeds/list/${sheetid}/${sheetno}/public/values?alt=json`;
+  getSheetData(): Observable<Artist[]> {
+    const sheetid = '1c-dJjel3KBgQ-Bg9vxAAhGCLkiFba9Ijud1OzAmhyzo';
 
-    return this.http.get(url).pipe(
-      map((res: any) => {
-        const data = res.feed.entry;
-        const returnArray: Array<any> = [];
-        if (data && data.length > 0) {
-          data.forEach((entry: any) => {
-            const obj = {};
-            for (const x in entry) {
-              if (x.includes('gsx$') && entry[x]['$t']) {
-                // obj[x.split('$')[1]] = entry[x]['$t'];
-              }
-            }
-            returnArray.push(obj);
-          });
-        }
-        return returnArray;
-      })
+    return this.googleSheetsDbService.get<Artist>(
+      sheetid,
+      'Artists',
+      artistsMap
     );
   }
 }
