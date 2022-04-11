@@ -12,12 +12,19 @@ export class AppComponent implements OnInit {
   constructor(private sheets: GoogleSheetsService) {}
 
   ngOnInit() {
-    this.sheets.getSheetData().subscribe((x) => {
-      this.artists = x;
+    this.sheets.getSheetData().subscribe((artists) => {
+      this.artists = artists.filter(a => a.paid !== '');
     });
   }
 
   goTo(url: string) {
-    if (url) window.open(url, '_blank');
+    if (url) {
+      if (url.startsWith('@'))
+        window.open(
+          `https://www.instagram.com/${url.replace('@', '')}`,
+          '_blank'
+        );
+      else window.open(url, '_blank');
+    }
   }
 }
