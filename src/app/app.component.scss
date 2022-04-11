@@ -1,5 +1,5 @@
-$BackgroundColor: #EAE1D0;
-$AccentColor: #EB4752;
+$BackgroundColor: #eae1d0;
+$AccentColor: #eb4752;
 
 $TopMargin: 25vh;
 
@@ -13,7 +13,8 @@ $TopMargin: 25vh;
     max-width: 50%;
     margin-top: $TopMargin;
 
-    img { // milk image
+    img {
+      // milk image
       width: 800px;
       object-fit: contain;
     }
@@ -35,24 +36,24 @@ $TopMargin: 25vh;
 
       .artist {
         position: relative;
-        transition: scale 0.4s cubic-bezier(0.8, 0.0, 0.2, 1.0);
+        transition: scale 0.4s cubic-bezier(0.8, 0, 0.2, 1);
         cursor: pointer;
         &::before {
           z-index: 1;
-          content: '';
+          content: "";
           background-color: $AccentColor;
           position: absolute;
           top: 0;
           height: 100%;
           width: 0%;
-          transition: width .7s cubic-bezier(1.0, 0.0, 0.2, 1.0) .1s;
+          transition: width 0.7s cubic-bezier(1, 0, 0.2, 1) 0.1s;
         }
 
         &:hover {
           scale: 1.3;
         }
         &:hover::before {
-            width: 100%;
+          width: 100%;
         }
       }
     }

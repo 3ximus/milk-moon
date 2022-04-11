@@ -1,17 +1,17 @@
 <div class="page">
-	<div class="milk-artists">
+  <div class="milk-artists">
+    <div class="artists">
+      <div
+        class="artist"
+        *ngFor="let artist of artists"
+        (click)="goTo(artist.url)"
+      >
+        <h1>{{ artist.name }}</h1>
+      </div>
+    </div>
 
-		<div class="artists">
-			<div class="artist"
-				*ngFor="let artist of artists"
-				(click)="goTo(artist.url)"
-				>
-				<h1>{{ artist.name }}</h1>
-			</div>
-		</div>
-
-		<img src="assets/milk-pack.png">
-	</div>
+    <img src="assets/milk-pack.png" />
+  </div>
 </div>
 
-<img class="title" src="assets/title.png">
+<img class="title" src="assets/title.png" />
