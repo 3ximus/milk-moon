@@ -21,7 +21,7 @@ $TopMargin: 25vh;
 
     .artists {
       font-family: Hind;
-      font-size: .9em;
+      font-size: 0.9em;
       // color: $AccentColor;
       position: absolute;
       top: calc($TopMargin + 180px);
@@ -58,6 +58,16 @@ $TopMargin: 25vh;
       }
     }
   }
+}
+
+.loading-animation {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .title {

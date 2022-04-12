@@ -5,10 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GoogleSheetsService } from './google-sheets.service';
 import { API_KEY, GoogleSheetsDbService } from 'ng-google-sheets-db';
+import { RiveModule, RIVE_FOLDER } from 'ng-rive';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, RiveModule],
   providers: [
     GoogleSheetsService,
     {

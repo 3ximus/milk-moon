@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Artist, GoogleSheetsService } from './google-sheets.service';
 
 @Component({
@@ -6,14 +6,14 @@ import { Artist, GoogleSheetsService } from './google-sheets.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   artists: Artist[] | undefined;
+  loading = true;
 
-  constructor(private sheets: GoogleSheetsService) {}
-
-  ngOnInit() {
+  constructor(private sheets: GoogleSheetsService) {
     this.sheets.getSheetData().subscribe((artists) => {
-      this.artists = artists.filter(a => a.paid !== '');
+      this.artists = artists.filter((a) => a.paid !== '');
+      this.loading = false;
     });
   }
 
