@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Artist, GoogleSheetsService } from './google-sheets.service';
 
 @Component({
@@ -9,8 +9,12 @@ import { Artist, GoogleSheetsService } from './google-sheets.service';
 export class AppComponent {
   artists: Artist[] | undefined;
   loading = true;
-
-  constructor(private sheets: GoogleSheetsService) {
+  hideCanvas = false;
+  destroyCanvas = false;
+  constructor(
+    private sheets: GoogleSheetsService,
+    private cdr: ChangeDetectorRef
+  ) {
     this.sheets.getSheetData().subscribe((artists) => {
       this.artists = artists.filter((a) => a.paid !== '');
       this.loading = false;
@@ -25,6 +29,18 @@ export class AppComponent {
           '_blank'
         );
       else window.open(url, '_blank');
+    }
+  }
+
+  animationStateChanged(state: string[]) {
+    if (state.length === 1 && state[0] === 'Final Spin') {
+      this.hideCanvas = true;
+      this.cdr.detectChanges();
+      setTimeout(() => {
+        this.destroyCanvas = true;
+        console.log(this.destroyCanvas);
+        this.cdr.detectChanges();
+      }, 2000);
     }
   }
 }

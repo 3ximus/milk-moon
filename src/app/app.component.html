@@ -1,3 +1,14 @@
+<header class="title">
+  <img src="assets/moon-logo.svg" alt="" />
+  <div class="title-text">
+    <div class="header">
+      <h1 class="tt">MILK MOON</h1>
+      <h2 class="tt">EXHIBITION</h2>
+    </div>
+    <p class="tt">Fine art exhibition</p>
+  </div>
+</header>
+
 <div class="page">
   <div class="milk-artists">
     <div class="artists">
@@ -10,7 +21,7 @@
       </div>
     </div>
 
-    <img src="assets/milk-pack.png" />
+    <img src="assets/milk-pack.svg" />
   </div>
 </div>
 
@@ -20,8 +31,14 @@
   width="1000"
   height="1000"
   alignment="center"
+  [class.down-leave-active]="hideCanvas"
+  *ngIf="!destroyCanvas"
 >
-  <riv-state-machine name="SM_fill_spin" play> </riv-state-machine>
+  <riv-state-machine
+    name="StateMachine"
+    (stateChange)="animationStateChanged($event)"
+    play
+  >
+    <riv-input name="doneLoading" [value]="!loading"></riv-input>
+  </riv-state-machine>
 </canvas>
-
-<img class="title" src="assets/title.png" />
