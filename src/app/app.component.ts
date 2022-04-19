@@ -1,4 +1,9 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { Artist, GoogleSheetsService } from './google-sheets.service';
 
 @Component({
@@ -7,9 +12,9 @@ import { Artist, GoogleSheetsService } from './google-sheets.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  @ViewChild('melt_animation') meltAnimation!: ElementRef;
   artists: Artist[] | undefined;
   loading = true;
-  hideCanvas = false;
   destroyCanvas = false;
   constructor(
     private sheets: GoogleSheetsService,
@@ -34,13 +39,12 @@ export class AppComponent {
 
   animationStateChanged(state: string[]) {
     if (state.length === 1 && state[0] === 'Final Spin') {
-      this.hideCanvas = true;
+      this.meltAnimation.nativeElement.beginElement();
       this.cdr.detectChanges();
       setTimeout(() => {
         this.destroyCanvas = true;
-        console.log(this.destroyCanvas);
         this.cdr.detectChanges();
-      }, 2000);
+      }, 3000);
     }
   }
 }
