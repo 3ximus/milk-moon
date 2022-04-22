@@ -2,19 +2,21 @@ $BackgroundColor: #eae1d0;
 $AccentColor: #ff5156;
 $DarkColor: #282828;
 
-$TopMargin: 25vh;
+$TitleHeight: 70px;
+$HeaderPadding: 3vh;
+$HeaderHeight: calc($TitleHeight + $HeaderPadding * 2);
 
 header {
   z-index: 4;
   position: fixed;
   top: 0;
   left: 0;
-  padding: 3vh 4vw;
+  padding: $HeaderPadding 4vw;
   width: calc(100% - 8vw);
   transition: 0.4s;
   .title {
     display: flex;
-    height: 70px;
+    height: $TitleHeight;
     color: $AccentColor;
     font-family: Poppins;
     white-space: nowrap;
@@ -65,24 +67,35 @@ header {
 
 .page {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   background-color: $BackgroundColor;
   overflow: hidden;
+  font-family: Poppins;
+  padding-top: $HeaderHeight;
+
+  .dates {
+    color: $AccentColor;
+    font-size: 1.5em;
+    text-align: right;
+    white-space: nowrap;
+    width: 50%;
+    line-height: 1;
+  }
+
   .milk-artists {
     max-width: 50%;
-    margin-top: $TopMargin;
     img {
       // milk image
       width: 800px;
       object-fit: contain;
     }
     .artists {
-      font-family: Poppins;
       font-size: 0.9em;
       color: $DarkColor;
       position: absolute;
-      top: calc($TopMargin + 200px);
       margin-left: -30px;
+      margin-top: 200px;
       h1 {
         margin: 0;
         padding: 0px 10px 0px 10px;
@@ -95,6 +108,7 @@ header {
         transition: scale 0.4s cubic-bezier(0.8, 0, 0.2, 1);
         transform-origin: right;
         cursor: pointer;
+        user-select: none;
         &::before {
           z-index: 1;
           content: "";
@@ -137,11 +151,12 @@ header {
 @media screen and (max-width: 655px) {
   .artists {
     font-size: 0.8em !important;
-    // h1 {
-    //   text-align: right !important;
-    // }
     right: 0;
     white-space: nowrap;
+  }
+  .dates {
+    font-size: 1.2em !important;
+    width: 85% !important;
   }
 }
 
