@@ -81,18 +81,19 @@ header {
       font-size: 0.9em;
       color: $DarkColor;
       position: absolute;
-      top: calc($TopMargin + 180px);
+      top: calc($TopMargin + 200px);
       margin-left: -30px;
       h1 {
         margin: 0;
         padding: 0px 10px 0px 10px;
-        text-align: center;
+        text-align: right;
         position: relative;
         z-index: 2;
       }
       .artist {
         position: relative;
         transition: scale 0.4s cubic-bezier(0.8, 0, 0.2, 1);
+        transform-origin: right;
         cursor: pointer;
         &::before {
           z-index: 1;
@@ -136,9 +137,11 @@ header {
 @media screen and (max-width: 655px) {
   .artists {
     font-size: 0.8em !important;
-    h1 {
-      text-align: right !important;
-    }
+    // h1 {
+    //   text-align: right !important;
+    // }
+    right: 0;
+    white-space: nowrap;
   }
 }
 
