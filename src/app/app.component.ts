@@ -67,6 +67,6 @@ export class AppComponent {
 
   @HostListener('window:scroll')
   onWindowScroll() {
-    this.scrolled = window.scrollY > 0;
+    this.scrolled = window.scrollY > 100;
   }
 }
