@@ -17,6 +17,7 @@ $TopMargin: 25vh;
   margin: 50px;
   color: $AccentColor;
   font-family: Poppins;
+  white-space: nowrap;
   height: 70px;
   &-text {
     margin-left: 14px;
@@ -105,8 +106,24 @@ $TopMargin: 25vh;
   height: 100%;
   object-fit: contain;
   background-color: $DarkColor;
+}
+
+.melt-mask-animation {
   clip-path: url(#melt-mask);
 }
 
+.down-leave-active {
+  animation: 2s down-leave cubic-bezier(0, 0, 0.42, 0.99) forwards;
+}
+
 @media screen and (max-width: 655px) {
+}
+
+@keyframes down-leave {
+  0% {
+    clip-path: inset(0);
+  }
+  100% {
+    clip-path: inset(100% 0 0 0);
+  }
 }

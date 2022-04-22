@@ -26,11 +26,13 @@
 </div>
 
 <canvas
+  #milk_canvas
   riv="milk_loading"
   class="loading-animation"
   width="1000"
   height="1000"
   alignment="center"
+  [class.melt-mask-animation]="!isAppleTrash"
   *ngIf="!destroyCanvas"
 >
   <riv-state-machine
@@ -42,7 +44,7 @@
   </riv-state-machine>
 </canvas>
 
-<svg width="0" height="0">
+<svg *ngIf="!isAppleTrash" width="0" height="0">
   <defs>
     <clipPath id="melt-mask" clipPathUnits="objectBoundingBox">
       <path

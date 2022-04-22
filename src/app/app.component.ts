@@ -13,9 +13,12 @@ import { Artist, GoogleSheetsService } from './google-sheets.service';
 })
 export class AppComponent {
   @ViewChild('melt_animation') meltAnimation!: ElementRef;
+  @ViewChild('milk_canvas') milk_canvas!: ElementRef;
   artists: Artist[] | undefined;
   loading = true;
   destroyCanvas = false;
+  isAppleTrash = false;
+
   constructor(
     private sheets: GoogleSheetsService,
     private cdr: ChangeDetectorRef
@@ -24,6 +27,9 @@ export class AppComponent {
       this.artists = artists.filter((a) => a.paid !== '');
       this.loading = false;
     });
+    this.isAppleTrash =
+      window.navigator.userAgent.toLowerCase().indexOf('iphone') > -1 ||
+      window.navigator.userAgent.toLowerCase().indexOf('macintosh') > -1;
   }
 
   goTo(url: string) {
@@ -39,7 +45,9 @@ export class AppComponent {
 
   animationStateChanged(state: string[]) {
     if (state.length === 1 && state[0] === 'Final Spin') {
-      this.meltAnimation.nativeElement.beginElement();
+      if (!this.isAppleTrash) this.meltAnimation.nativeElement.beginElement();
+      else this.milk_canvas.nativeElement.classList.add('down-leave-active');
+
       this.cdr.detectChanges();
       setTimeout(() => {
         this.destroyCanvas = true;
