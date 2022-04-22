@@ -2,6 +2,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  HostListener,
   ViewChild,
 } from '@angular/core';
 import { Artist, GoogleSheetsService } from './google-sheets.service';
@@ -20,6 +21,8 @@ export class AppComponent {
   milkDropAnimationPlayed = false;
   destroyCanvas = false;
   isAppleTrash = false;
+
+  scrolled = false;
 
   constructor(
     private sheets: GoogleSheetsService,
@@ -60,5 +63,10 @@ export class AppComponent {
       this.destroyCanvas = true;
       this.cdr.detectChanges();
     }, 3000);
+  }
+
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    this.scrolled = window.scrollY > 0;
   }
 }
