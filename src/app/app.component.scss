@@ -86,7 +86,7 @@ header {
       h1 {
         margin: 0;
         padding: 0px 10px 0px 10px;
-        text-align: right;
+        text-align: center;
         position: relative;
         z-index: 2;
       }
@@ -134,6 +134,12 @@ header {
 }
 
 @media screen and (max-width: 655px) {
+  .artists {
+    font-size: 0.8em !important;
+    h1 {
+      text-align: right !important;
+    }
+  }
 }
 
 @keyframes down-leave {
