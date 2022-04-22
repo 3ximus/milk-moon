@@ -15,7 +15,9 @@ export class AppComponent {
   @ViewChild('melt_animation') meltAnimation!: ElementRef;
   @ViewChild('milk_canvas') milk_canvas!: ElementRef;
   artists: Artist[] | undefined;
+
   loading = true;
+  milkDropAnimationPlayed = false;
   destroyCanvas = false;
   isAppleTrash = false;
 
@@ -23,13 +25,19 @@ export class AppComponent {
     private sheets: GoogleSheetsService,
     private cdr: ChangeDetectorRef
   ) {
-    this.sheets.getSheetData().subscribe((artists) => {
-      this.artists = artists.filter((a) => a.paid !== '');
-      this.loading = false;
-    });
     this.isAppleTrash =
       window.navigator.userAgent.toLowerCase().indexOf('iphone') > -1 ||
       window.navigator.userAgent.toLowerCase().indexOf('macintosh') > -1;
+    this.sheets.getSheetData().subscribe((artists) => {
+      this.artists = artists.filter((a) => a.paid !== '');
+      this.loading = false;
+      if (!this.loading && this.milkDropAnimationPlayed) this.hideAnimation();
+    });
+    setTimeout(() => {
+      // wait for milk drop animation to reach spinning
+      this.milkDropAnimationPlayed = true;
+      if (!this.loading && this.milkDropAnimationPlayed) this.hideAnimation();
+    }, 3250);
   }
 
   goTo(url: string) {
@@ -43,16 +51,14 @@ export class AppComponent {
     }
   }
 
-  animationStateChanged(state: string[]) {
-    if (state.length === 1 && state[0] === 'Final Spin') {
-      if (!this.isAppleTrash) this.meltAnimation.nativeElement.beginElement();
-      else this.milk_canvas.nativeElement.classList.add('down-leave-active');
+  hideAnimation() {
+    if (!this.isAppleTrash) this.meltAnimation.nativeElement.beginElement();
+    else this.milk_canvas.nativeElement.classList.add('down-leave-active');
 
+    this.cdr.detectChanges();
+    setTimeout(() => {
+      this.destroyCanvas = true;
       this.cdr.detectChanges();
-      setTimeout(() => {
-        this.destroyCanvas = true;
-        this.cdr.detectChanges();
-      }, 3000);
-    }
+    }, 3000);
   }
 }

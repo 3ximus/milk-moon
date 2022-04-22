@@ -35,13 +35,7 @@
   [class.melt-mask-animation]="!isAppleTrash"
   *ngIf="!destroyCanvas"
 >
-  <riv-state-machine
-    name="StateMachine"
-    (stateChange)="animationStateChanged($event)"
-    play
-  >
-    <riv-input name="doneLoading" [value]="!loading"></riv-input>
-  </riv-state-machine>
+  <riv-state-machine name="StateMachine" play></riv-state-machine>
 </canvas>
 
 <svg *ngIf="!isAppleTrash" width="0" height="0">
