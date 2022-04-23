@@ -18,19 +18,25 @@
 </header>
 
 <div class="page">
-  <div class="milk-artists">
+  <section class="milk-artists">
     <div class="artists">
       <div
         class="artist"
-        *ngFor="let artist of artists"
+        *ngFor="let artist of artists; let i = index"
         (click)="goTo(artist.link)"
+        [ngClass]="popInTrigger ? 'pop-in-' + i : ''"
       >
         <h1>{{ artist.name }}</h1>
       </div>
     </div>
 
     <img src="assets/milk-pack.svg" />
+  </section>
+
+  <div class="tickets">
+    <a href="https://www.eventbrite.com/e/325331604587">Ai ui eu chamo-me antonio</a>
   </div>
+
 </div>
 
 <canvas
@@ -41,7 +47,7 @@
   height="1000"
   alignment="center"
   [class.melt-mask-animation]="!isAppleTrash"
-  *ngIf="!destroyCanvas"
+  *ngIf="!destroyCanvasTrigger"
 >
   <riv-state-machine name="StateMachine" play></riv-state-machine>
 </canvas>

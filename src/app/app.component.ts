@@ -1,5 +1,4 @@
 import {
-  ChangeDetectorRef,
   Component,
   ElementRef,
   HostListener,
@@ -17,10 +16,12 @@ export class AppComponent {
   @ViewChild('milk_canvas') milk_canvas!: ElementRef;
   artists: Artist[] | undefined;
 
+  isAppleTrash = false;
+
   loading = true;
   milkDropAnimationPlayed = false;
-  destroyCanvas = false;
-  isAppleTrash = false;
+  destroyCanvasTrigger = false;
+  popInTrigger = false;
 
   scrolled = false;
 
@@ -55,9 +56,11 @@ export class AppComponent {
     if (!this.isAppleTrash) this.meltAnimation.nativeElement.beginElement();
     else this.milk_canvas.nativeElement.classList.add('down-leave-active');
 
+    this.popInTrigger = true;
+
     setTimeout(() => {
-      this.destroyCanvas = true;
-    }, 3000);
+      this.destroyCanvasTrigger = true;
+    }, 2000);
   }
 
   @HostListener('window:scroll')
