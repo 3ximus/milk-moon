@@ -152,6 +152,38 @@ header {
       }
     }
   }
+
+  .tickets {
+    margin: 100px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    a {
+      text-decoration: none;
+    }
+    button {
+      display: flex;
+      align-items: center;
+      border: none;
+      padding: 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      outline: inherit;
+      background-color: $AccentColor;
+      color: $BackgroundColor;
+      font-family: Poppins;
+      font-size: 30px;
+      font-weight: bold;
+      transition: .3s cubic-bezier(1, 0, 0.2, 1);
+      img {
+        width: 70px;
+        margin-left: 20px;
+      }
+      &:hover {
+        scale: 1.2;
+      }
+    }
+  }
 }
 
 .loading-animation {
