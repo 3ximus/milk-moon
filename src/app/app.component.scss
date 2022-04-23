@@ -4,26 +4,30 @@ $DarkColor: #282828;
 
 $TitleHeight: 70px;
 $HeaderPadding: 3vh;
-$HeaderHeight: calc($TitleHeight + $HeaderPadding * 2);
+$DateMargin: calc($TitleHeight + $HeaderPadding * 2);
+$DateHeight: 96px;
+$HeaderHeight: calc($HeaderPadding + $DateMargin + $DateHeight);
 
 header {
   z-index: 4;
   position: fixed;
   top: 0;
   left: 0;
+  display: flex;
+  justify-content: space-between;
+  font-family: Poppins;
   padding: $HeaderPadding 4vw;
   width: calc(100% - 8vw);
-  transition: 0.4s;
+  transition: width 0.4s, padding 0.4s, background-color 0.1s;
   .title {
     display: flex;
     height: $TitleHeight;
     color: $AccentColor;
-    font-family: Poppins;
     white-space: nowrap;
     transform-origin: left;
     transition: 0.4s;
     img {
-      margin: 0px 14px;
+      width: 80px;
     }
     &-text {
       transition: 0.4s;
@@ -52,14 +56,43 @@ header {
       }
     }
   }
+
+  .dates {
+    color: $AccentColor;
+    font-size: 1.5em;
+    text-align: right;
+    white-space: nowrap;
+    line-height: 1;
+    transform-origin: top right;
+    transition: 0.4s;
+    margin-top: $DateMargin;
+    height: $DateHeight;
+    h1 {
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+
   &.scrolled {
     background-color: $DarkColor;
     padding: 1vh 0vw;
     width: 100%;
+    transition: width 0.4s, padding 0.4s, background-color 0.4s 0.3s;
     .title {
       transform: scale(0.7);
       p.tt {
         opacity: 0;
+      }
+    }
+    .dates {
+      transform: scale(0.5);
+      height: calc($DateHeight * 0.5);
+      margin: 10px 20px 0px 0px;
+      h1 {
+        font-weight: 400;
+        // span {
+        //   display: none;
+        // }
       }
     }
   }
@@ -74,15 +107,6 @@ header {
   font-family: Poppins;
   padding-top: $HeaderHeight;
 
-  .dates {
-    color: $AccentColor;
-    font-size: 1.5em;
-    text-align: right;
-    white-space: nowrap;
-    width: 50%;
-    line-height: 1;
-  }
-
   .milk-artists {
     max-width: 50%;
     img {
@@ -94,12 +118,12 @@ header {
       font-size: 0.9em;
       color: $DarkColor;
       position: absolute;
-      margin-left: -30px;
       margin-top: 200px;
       h1 {
         margin: 0;
         padding: 0px 10px 0px 10px;
         text-align: right;
+        font-weight: 600;
         position: relative;
         z-index: 2;
       }
@@ -148,6 +172,11 @@ header {
   animation: 2s down-leave cubic-bezier(0, 0, 0.42, 0.99) forwards;
 }
 
+.tracking-in-contract-bck {
+  animation: tracking-in-contract-bck 1s cubic-bezier(0.215, 0.61, 0.355, 1)
+    both;
+}
+
 @media screen and (max-width: 655px) {
   .artists {
     font-size: 0.8em !important;
@@ -166,5 +195,20 @@ header {
   }
   100% {
     clip-path: inset(100% 0 0 0);
+  }
+}
+
+@keyframes tracking-in-contract-bck {
+  0% {
+    letter-spacing: 1em;
+    transform: translateZ(400px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateZ(0);
+    opacity: 1;
   }
 }

@@ -24,10 +24,7 @@ export class AppComponent {
 
   scrolled = false;
 
-  constructor(
-    private sheets: GoogleSheetsService,
-    private cdr: ChangeDetectorRef
-  ) {
+  constructor(private sheets: GoogleSheetsService) {
     this.isAppleTrash =
       window.navigator.userAgent.toLowerCase().indexOf('iphone') > -1 ||
       window.navigator.userAgent.toLowerCase().indexOf('macintosh') > -1;
@@ -58,10 +55,8 @@ export class AppComponent {
     if (!this.isAppleTrash) this.meltAnimation.nativeElement.beginElement();
     else this.milk_canvas.nativeElement.classList.add('down-leave-active');
 
-    this.cdr.detectChanges();
     setTimeout(() => {
       this.destroyCanvas = true;
-      this.cdr.detectChanges();
     }, 3000);
   }
 
