@@ -78,7 +78,7 @@ header {
     background-color: $DarkColor;
     padding: 1vh 0vw;
     width: 100%;
-    transition: width 0.4s, padding 0.4s, background-color .5s 0.2s;
+    transition: width 0.4s, padding 0.4s, background-color 0.5s 0.2s;
     .title {
       transform: scale(0.7);
       p.tt {
@@ -192,9 +192,19 @@ svg {
       padding: 3px 0px;
     }
   }
-  .dates {
-    font-size: 1.2em !important;
-    width: 85% !important;
+  header {
+    .title {
+      width: 10px; /* force title to be really small */
+    }
+    .dates {
+      font-size: 1.2em !important;
+      margin-right: 10px !important;
+    }
+    &.scrolled {
+      .dates {
+        margin: 15px 10px 0px 0px !important;
+      }
+    }
   }
 }
 
