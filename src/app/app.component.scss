@@ -8,6 +8,10 @@ $DateMargin: calc($TitleHeight + $HeaderPadding * 2);
 $DateHeight: 96px;
 $HeaderHeight: calc($HeaderPadding + $DateMargin + $DateHeight);
 
+:host {
+  font-family: Poppins;
+}
+
 header {
   z-index: 4;
   position: fixed;
@@ -15,7 +19,6 @@ header {
   left: 0;
   display: flex;
   justify-content: space-between;
-  font-family: Poppins;
   padding: $HeaderPadding 4vw;
   width: calc(100% - 8vw);
   transition: width 0.4s, padding 0.4s, background-color 0.1s;
@@ -102,7 +105,6 @@ header {
   align-items: center;
   background-color: $BackgroundColor;
   overflow: hidden;
-  font-family: Poppins;
   padding-top: $HeaderHeight;
 
   .milk-artists {
@@ -160,28 +162,52 @@ header {
     justify-content: center;
     a {
       text-decoration: none;
+      color: $DarkColor;
     }
-    button {
-      display: flex;
-      align-items: center;
-      border: none;
-      padding: 15px;
-      border-radius: 5px;
+    .button {
+      width: 400px;
       cursor: pointer;
-      outline: inherit;
-      background-color: $AccentColor;
-      color: $BackgroundColor;
-      font-family: Poppins;
-      font-size: 30px;
-      font-weight: bold;
-      transition: .3s cubic-bezier(1, 0, 0.2, 1);
-      img {
-        width: 70px;
-        margin-left: 20px;
+      position: relative;
+      span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        font-size: 40px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: -8px;
       }
+      img {
+        transition: 0.3s cubic-bezier(1, 0, 0.2, 1);
+      }
+      transition: 0.3s cubic-bezier(1, 0, 0.2, 1);
       &:hover {
         scale: 1.2;
+        img {
+          filter: drop-shadow(15px 30px 10px rgb(0 0 0 / 0.4));
+        }
       }
+    }
+  }
+  .footer {
+    font-size: 20px;
+    font-weight: 600;
+    color: $AccentColor;
+    background-color: $DarkColor;
+    padding: 10px 0 30px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    a {
+      color: inherit;
+    }
+    p {
+      margin: 10px;
     }
   }
 }
@@ -236,6 +262,14 @@ svg {
       .dates {
         margin: 15px 10px 0px 0px !important;
       }
+    }
+  }
+  .tickets .button {
+    width: 250px !important;
+
+    span {
+      margin-top: -8px !important;
+      font-size: 28px !important;
     }
   }
 }
