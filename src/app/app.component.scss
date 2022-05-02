@@ -129,6 +129,7 @@ header {
       }
       .artist {
         position: relative;
+        right: 41px;
         transition: scale 0.4s cubic-bezier(0.8, 0, 0.2, 1);
         transform-origin: right;
         cursor: pointer;
@@ -249,6 +250,7 @@ svg {
     white-space: nowrap;
     .artist {
       padding: 3px 0px;
+      right: 0px !important;
     }
   }
   header {
