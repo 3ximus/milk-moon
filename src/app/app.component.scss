@@ -229,7 +229,7 @@ header {
 }
 
 .down-leave-active {
-  animation: 2s down-leave linear forwards;
+  animation: 2s down-leave cubic-bezier(0.8, 0, 0.2, 1) forwards;
 }
 
 @for $i from 0 through 20 {
@@ -279,10 +279,10 @@ svg {
 
 @keyframes down-leave {
   0% {
-    clip-path: inset(0);
+    clip-path: polygon(0 100%, 100% 100%, 100% -30%, 0 0);
   }
   100% {
-    clip-path: inset(100% 0 0 0);
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 130%);
   }
 }
 
