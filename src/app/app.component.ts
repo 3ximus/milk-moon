@@ -27,12 +27,12 @@ export class AppComponent {
     this.sheets.getSheetData().subscribe((artists) => {
       this.artists = artists.filter((a) => a.paid !== '');
       this.loading = false;
-      if (!this.loading && this.milkDropAnimationPlayed) this.hideAnimation();
+      if (this.milkDropAnimationPlayed) this.hideAnimation();
     });
     setTimeout(() => {
       // wait for milk drop animation to reach spinning
       this.milkDropAnimationPlayed = true;
-      if (!this.loading && this.milkDropAnimationPlayed) this.hideAnimation();
+      if (!this.loading) this.hideAnimation();
     }, 3250);
   }
 
@@ -48,10 +48,11 @@ export class AppComponent {
   }
 
   hideAnimation() {
+    if (this.popInTrigger) return;
+    this.popInTrigger = true;
+
     if (!this.isAppleTrash) this.meltAnimation.nativeElement.beginElement();
     else this.milk_canvas.nativeElement.classList.add('down-leave-active');
-
-    this.popInTrigger = true;
 
     setTimeout(() => {
       this.destroyCanvasTrigger = true;
