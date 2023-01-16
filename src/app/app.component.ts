@@ -24,6 +24,7 @@ export class AppComponent {
     this.isAppleTrash =
       window.navigator.userAgent.toLowerCase().indexOf('iphone') > -1 ||
       window.navigator.userAgent.toLowerCase().indexOf('macintosh') > -1;
+
     this.sheets.getSheetData().subscribe((artists) => {
       this.artists = artists.filter((a) => a.paid !== '');
       this.loading = false;
